@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unreal Streamings</title>
+  <title>Loja Unreal</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -65,7 +65,7 @@
       width: 100%;
       height: 450px;
       overflow: hidden;
-      margin-top: 80px; /* Ajuste para não ficar atrás da navbar fixa */
+      margin-top: 80px;
     }
     .slide {
       position: absolute;
@@ -99,26 +99,26 @@
       background: linear-gradient(transparent, var(--dark-bg));
     }
 
-    /* Container de Produtos */
+    /* Container de Produtos - AJUSTADO PARA 2 COLUNAS */
     .container {
-      width: 95%;
+      width: 98%;
       max-width: 1200px;
       margin: auto;
-      padding: 40px 10px;
+      padding: 20px 5px;
     }
 
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(2, 1fr); /* Força 2 colunas */
+      gap: 12px; /* Espaçamento menor para caber melhor */
     }
 
     .product {
       background: var(--card-light);
       backdrop-filter: blur(5px);
       border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 20px;
-      padding: 25px;
+      border-radius: 15px;
+      padding: 15px 10px; /* Padding reduzido */
       text-align: center;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
@@ -134,24 +134,33 @@
     .product.visible { opacity: 1; transform: translateY(0); }
 
     .product:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
 
     .product img {
       max-width: 100%;
-      border-radius: 15px;
+      border-radius: 10px;
       transition: 0.3s;
+    }
+
+    .product h2 {
+      font-size: 0.9rem; /* Título menor para caber em 2 colunas */
+      margin: 10px 0;
+      min-height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* Badge Estilizado */
     .badge {
       position: absolute;
-      top: -10px;
-      right: 20px;
-      padding: 6px 15px;
+      top: -5px;
+      right: 10px;
+      padding: 4px 10px;
       border-radius: 50px;
-      font-size: 0.75rem;
+      font-size: 0.6rem;
       font-weight: 700;
       text-transform: uppercase;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -161,37 +170,38 @@
     .badge.promo { background: linear-gradient(45deg, #e91e63, #9c27b0); color: white; }
     .badge.new { background: linear-gradient(45deg, #2196f3, #00bcd4); color: white; }
 
-    /* Preço e Botão com efeito Neon */
+    /* Preço e Botão */
     .price {
-      font-size: 1.8rem;
+      font-size: 1.3rem; /* Preço menor */
       font-weight: 800;
       color: var(--primary);
-      margin: 15px 0;
+      margin: 10px 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
+      gap: 3px;
     }
-    .price span { font-size: 0.9rem; opacity: 0.7; font-weight: 400; }
+    .price span { font-size: 0.7rem; opacity: 0.7; font-weight: 400; }
 
     .btn {
       display: block;
       background: linear-gradient(90deg, #4CAF50, #2e7d32, #4CAF50);
       background-size: 200% auto;
       color: white;
-      padding: 16px;
+      padding: 10px 5px;
       text-decoration: none;
       font-weight: 700;
-      border-radius: 12px;
+      font-size: 0.75rem; /* Botão menor */
+      border-radius: 8px;
       transition: 0.5s;
       box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
       animation: neonPulse 2s infinite;
     }
 
     @keyframes neonPulse {
-      0% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.4), 0 0 10px rgba(76, 175, 80, 0.2); }
-      50% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.8), 0 0 30px rgba(76, 175, 80, 0.4); }
-      100% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.4), 0 0 10px rgba(76, 175, 80, 0.2); }
+      0% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.4); }
+      50% { box-shadow: 0 0 15px rgba(76, 175, 80, 0.7); }
+      100% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.4); }
     }
 
     .btn:hover {
@@ -199,28 +209,27 @@
       transform: scale(1.02);
     }
 
-    /* Efeito Piscando/Oscilando para links WhatsApp */
     .blink-text {
       animation: blink 1.5s infinite;
     }
 
     @keyframes blink {
-      0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.7; transform: scale(0.98); }
-      100% { opacity: 1; transform: scale(1); }
+      0% { opacity: 1; }
+      50% { opacity: 0.8; }
+      100% { opacity: 1; }
     }
 
     /* Contador e Urgência */
     #countdown {
       font-weight: 600;
       color: #e91e63;
-      font-size: 0.9rem;
-      margin-bottom: 10px;
+      font-size: 0.65rem;
+      margin-bottom: 5px;
     }
     .live-viewers {
-      font-size: 0.8rem;
+      font-size: 0.65rem;
       color: #666;
-      margin-top: 10px;
+      margin-top: 8px;
     }
     body.dark-mode .live-viewers { color: #aaa; }
 
@@ -228,14 +237,17 @@
     .garantia {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin: 60px 0;
+      gap: 10px;
+      margin: 40px 0;
       background: rgba(255,255,255,0.5);
-      padding: 30px;
+      padding: 20px 10px;
       border-radius: 20px;
+      text-align: center;
     }
     body.dark-mode .garantia { background: rgba(255,255,255,0.03); }
-    .garantia div i { font-size: 2.5rem; margin-bottom: 15px; color: var(--primary); }
+    .garantia div i { font-size: 1.5rem; margin-bottom: 10px; color: var(--primary); }
+    .garantia h3 { font-size: 0.8rem; margin: 5px 0; }
+    .garantia p { font-size: 0.7rem; margin: 0; }
 
     /* FAQ Accordion */
     .faq-item {
@@ -243,55 +255,56 @@
       margin-bottom: 10px;
       border-radius: 12px;
       overflow: hidden;
-      transition: 0.3s;
     }
     body.dark-mode .faq-item { background: #1e1e1e; }
     .faq-item h3 {
-      padding: 20px;
+      padding: 15px;
       margin: 0;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-size: 0.9rem;
     }
     .faq-item p {
-      padding: 0 20px 20px;
+      padding: 0 15px 15px;
       display: none;
-      line-height: 1.6;
-      opacity: 0.9;
+      font-size: 0.85rem;
+      line-height: 1.5;
     }
 
     /* Floating Buttons */
     .whatsapp-float {
-      position: fixed; left: 20px; bottom: 20px;
-      background: #25D366; color: white; padding: 15px 25px;
+      position: fixed; left: 15px; bottom: 15px;
+      background: #25D366; color: white; padding: 10px 18px;
       border-radius: 50px; text-decoration: none; font-weight: 700;
+      font-size: 0.8rem;
       box-shadow: 0 0 15px rgba(37, 211, 102, 0.6); z-index: 1000;
-      display: flex; align-items: center; gap: 10px;
-      animation: neonPulseGreen 2s infinite, blink 2s infinite;
+      display: flex; align-items: center; gap: 8px;
+      animation: neonPulseGreen 2s infinite;
     }
 
     @keyframes neonPulseGreen {
       0% { box-shadow: 0 0 5px rgba(37, 211, 102, 0.4); }
-      50% { box-shadow: 0 0 20px rgba(37, 211, 102, 0.8); }
+      50% { box-shadow: 0 0 15px rgba(37, 211, 102, 0.8); }
       100% { box-shadow: 0 0 5px rgba(37, 211, 102, 0.4); }
     }
 
     #darkModeToggle {
-      position: fixed; top: 70px; right: 20px;
+      position: fixed; top: 70px; right: 15px;
       background: var(--accent); color: white; border: none;
-      width: 45px; height: 45px; border-radius: 50%; cursor: pointer;
-      z-index: 1100; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+      z-index: 1100;
     }
     #backToTop {
-      position: fixed; bottom: 20px; right: 20px; display: none;
-      background: #333; color: white; width: 45px; height: 45px;
+      position: fixed; bottom: 15px; right: 15px; display: none;
+      background: #333; color: white; width: 40px; height: 40px;
       border-radius: 50%; border: none; cursor: pointer; z-index: 1000;
     }
 
-    @media (max-width: 768px) {
-      .garantia { grid-template-columns: 1fr; }
-      .carousel { height: 300px; }
+    @media (max-width: 480px) {
+      .carousel { height: 220px; }
+      .garantia { grid-template-columns: 1fr; gap: 20px; }
     }
   </style>
 </head>
@@ -302,9 +315,10 @@
   </nav>
 
   <div class="carousel">
-    <div class="slide active"><img src="1_20250915_081014_0000.jpg" alt="Banner 1"></div>
-    <div class="slide"><img src="2_20250915_081014_0001.jpg" alt="Banner 2"></div>
-    <div class="slide"><img src="3_20250915_081014_0002.jpg" alt="Banner 3"></div>
+    <div class="slide active"><img src="1772716110539.jpg" alt="Banner 1"></div>
+    <div class="slide"><img src="1772716180266.jpg" alt="Banner 2"></div>
+    <div class="slide"><img src="1772716356121.jpg" alt="Banner 3"></div>
+    <div class="slide"><img src="1772716765263.jpg" alt="Banner 4"></div>
     <div class="carousel-overlay"></div>
   </div>
 
@@ -312,70 +326,73 @@
     <div class="products">
       
       <div class="product">
-        <span class="badge popular">Best Seller</span>
-        <img src="46aa4f435321758d3ce2e84c78f2529c.jpg" alt="HBO">
-        <h2>HBO MAX PLATINUM</h2>
-        <div class="price"><span>R$</span> 9,99</div>
-        <a href="https://wa.me/559885037911?text=Olá!%20Gostaria%20de%20assinar%20o%20HBO%20MAX%20PLATINUM." class="btn blink-text" target="_blank">ASSINAR AGORA</a>
-        <p class="live-viewers"><i class="fas fa-eye"></i> 14 pessoas vendo agora</p>
+        <span class="badge popular">Top 1</span>
+        <img src="8e62ce8b0b67d508a0ed81b79bc95 835.jpg" alt="XT53">
+        <h2>Lenovo XT53 Wireless Bluetooth </h2>
+        <div class="price"><span>R$</span> 98,90</div>
+        <a href="https://wa.me/559885037911?text=Olá!%20Gostaria%20de%20comprar%20o%20fone%20Lenovo%20XT53.%20Pode%20me%20passar%20mais%20informações?" class="btn blink-text" target="_blank">COMPRAR</a>
+        <p class="live-viewers"><i class="fas fa-eye"></i> 18 vendo</p>
       </div>
 
       <div class="product">
         <span class="badge promo">OFERTA</span>
-        <img src="785e92396025ff4cf8c77ac04c8f7b10.jpg" alt="Disney">
-        <h2>DISNEY PREMIUM</h2>
-        <div id="countdown">Oferta expira em: --:--:--</div>
-        <div class="price"><span>R$</span> 10,00</div>
-        <a href="https://wa.me/559885037911?text=Olá!%20Gostaria%20de%20aproveitar%20a%20promoção%20do%20DISNEY%20PREMIUM." class="btn blink-text" target="_blank">APROVEITAR OFERTA</a>
-        <p class="live-viewers"><i class="fas fa-eye"></i> 8 pessoas vendo agora</p>
+        <img src="575ab29f65f741b192b8c9f21efeb790.jpg" alt="QKZ AK6">
+        <h2>Qkz Ak6 Original gamer</h2>
+        <div id="countdown">--:--:--</div>
+        <div class="price"><span>R$</span> 45,00</div>
+        <a href="https://wa.me/559885037911?text=Olá!%20Tenho%20interesse%20no%20fone%20QKZ%20AK6%20Gamer%20da%20promoção." class="btn blink-text" target="_blank">APROVEITAR</a>
+        <p class="live-viewers"><i class="fas fa-eye"></i> 8 vendo</p>
       </div>
 
       <div class="product">
-        <span class="badge new">Promoção</span>
-        <img src="914ab4f5390df5b619fc7b9398212673.jpg" alt="Paramount">
-        <h2>PARAMOUNT+</h2>
-        <div class="price"><span>R$</span> 8,00</div>
-        <a href="https://wa.me/559885037911?text=Olá!%20Gostaria%20de%20assinar%20o%20PARAMOUNT+." class="btn blink-text" target="_blank">ASSINAR AGORA</a>
+        <span class="badge new">Promo</span>
+        <img src="185384ce8730d65b9940a8da713212bf.jpg" alt="M90 PRO">
+        <h2>Fone M90 Pro Bluetooth</h2>
+        <div class="price"><span>R$</span> 45,00</div>
+        <a href="https://wa.me/559885037911?text=Olá!%20Gostaria%20de%20adquirir%20o%20Fone%20M90%20Pro%20Bluetooth." class="btn blink-text" target="_blank">COMPRAR</a>
       </div>
 
       <div class="product">
         <span class="badge new">Novo</span>
-        <img src="6021f45f8dc894ca33ba98f85dc14e08.jpg" alt="Youtube">
-        <h2>YOUTUBE PREMIUM 3 MESES</h2>
-        <div class="price"><span>R$</span> 15,00</div>
-        <a href="https://wa.me/559885037911?text=Olá!%20Tenho%20interesse%20no%20YOUTUBE%20PREMIUM%20de%203%20meses." class="btn blink-text" target="_blank">ASSINAR AGORA</a>
+        <img src="b6eb81c9cff8ae1cd6f280eaf267123f.jpg" alt="M25 PRO">
+        <h2>M25 Pro Sem Fio Bluetooth 5.3</h2>
+        <div class="price"><span>R$</span> 40,00</div>
+        <a href="https://wa.me/559885037911?text=Olá!%20Gostaria%20de%20comprar%20o%20M25%20Pro%20Sem%20Fio." class="btn blink-text" target="_blank">COMPRAR</a>
       </div>
     </div>
   </div>
 
   <div class="container garantia">
-    <div><i class="fas fa-shield-halved"></i><h3>Compra Segura</h3><p>Criptografia de ponta a ponta.</p></div>
-    <div><i class="fas fa-bolt-lightning"></i><h3>Entrega Flash</h3><p>Receba seus dados em minutos.</p></div>
-    <div><i class="fas fa-headset"></i><h3>Suporte VIP</h3><p>Atendimento humano via WhatsApp.</p></div>
+    <div><i class="fas fa-truck-fast"></i><h3>Araguanã</h3><p>Entrega Local</p></div>
+    <div><i class="fas fa-shield-check"></i><h3>Garantia</h3><p>30 Dias</p></div>
+    <div><i class="fas fa-headset"></i><h3>VIP</h3><p>Suporte Whats</p></div>
   </div>
 
   <div class="container faq">
-    <h2 style="text-align: center; margin-bottom: 40px;">Dúvidas Frequentes</h2>
+    <h2 style="text-align: center; margin-bottom: 30px; font-size: 1.2rem;">Dúvidas Frequentes</h2>
     <div class="faq-item">
-      <h3>Como recebo meu acesso? <i class="fas fa-chevron-down"></i></h3>
-      <p>Após o pagamento, envie o comprovante no nosso WhatsApp. Validamos na hora e enviamos seus dados de acesso imediatamente!.</p>
+      <h3>Como recebo meu produto? <i class="fas fa-chevron-down"></i></h3>
+      <p>Fazemos a entrega diretamente na sua residência para quem mora em Araguanã-MA! Basta combinar o melhor horário via WhatsApp.</p>
     </div>
     <div class="faq-item">
-      <h3>Tem garantia? <i class="fas fa-chevron-down"></i></h3>
-      <p>Sim! Todos os nossos planos possuem garantia total durante todo o período da assinatura.</p>
+      <h3>Os fones possuem garantia? <i class="fas fa-chevron-down"></i></h3>
+      <p>Sim! Todos os nossos produtos possuem garantia de 30 dias contra qualquer defeito de fabricação, garantindo total segurança para você.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Quais as formas de pagamento? <i class="fas fa-chevron-down"></i></h3>
+      <p>Aceitamos PIX, cartões de crédito e pagamento em dinheiro no ato da entrega em Araguanã.</p>
     </div>
   </div>
 
-  <footer style="background: #000; color: #666; padding: 40px 20px; text-align: center; font-size: 0.8rem;">
-    <p>© 2025 UNREAL STREAMINGS - Todos os direitos reservados</p>
-    <p>As marcas mencionadas são de propriedade de seus respectivos donos.</p>
+  <footer style="background: #000; color: #666; padding: 30px 20px; text-align: center; font-size: 0.7rem;">
+    <p>© 2025 CM IMPORTS VARIEDADES</p>
   </footer>
 
   <a href="https://wa.me/559885037911" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i> SUPORTE WHATSAPP
+    <i class="fab fa-whatsapp"></i> SUPORTE
   </a>
   
-  <button id="darkModeToggle" title="Alternar Tema"><i class="fas fa-moon"></i></button>
+  <button id="darkModeToggle" title="Tema"><i class="fas fa-moon"></i></button>
   <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
 
   <script>
@@ -392,10 +409,8 @@
         const p = item.nextElementSibling;
         const icon = item.querySelector('i');
         const isOpen = p.style.display === 'block';
-        
         document.querySelectorAll('.faq-item p').forEach(el => el.style.display = 'none');
         document.querySelectorAll('.faq-item i').forEach(el => el.style.transform = 'rotate(0deg)');
-
         if (!isOpen) {
           p.style.display = 'block';
           icon.style.transform = 'rotate(180deg)';
@@ -403,7 +418,7 @@
       });
     });
 
-    // Carrossel Zoom In
+    // Carrossel
     const slides = document.querySelectorAll('.slide');
     let current = 0;
     setInterval(() => {
@@ -412,17 +427,15 @@
       slides[current].classList.add('active');
     }, 5000);
 
-    // Observer para entrada suave
+    // Observer entrada suave
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.product').forEach(p => observer.observe(p));
 
-    // Dark Mode Toggle
+    // Dark Mode
     const btnDark = document.getElementById('darkModeToggle');
     btnDark.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
@@ -430,26 +443,22 @@
       btnDark.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     });
 
-    // Countdown Progressivo
+    // Countdown
     function startCountdown(duration) {
       let timer = duration, hours, minutes, seconds;
       setInterval(() => {
         hours = parseInt(timer / 3600, 10);
         minutes = parseInt((timer % 3600) / 60, 10);
         seconds = parseInt(timer % 60, 10);
-        
         const display = document.getElementById("countdown");
-        if(display) {
-          display.innerHTML = `Oferta expira em: ${hours}h ${minutes}m ${seconds}s`;
-        }
-        
+        if(display) display.innerHTML = `Expira em: ${hours}h ${minutes}m ${seconds}s`;
         if (--timer < 0) timer = duration;
       }, 1000);
     }
     startCountdown(20530);
 
-    // Voltar ao topo suave
     document.getElementById('backToTop').onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
   </script>
 </body>
 </html>
+
